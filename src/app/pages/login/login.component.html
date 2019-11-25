@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="app-login">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Username"
+        formControlName="username">
+      <mat-error *ngIf="loginForm.get('username').invalid">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password">
+      <mat-error *ngIf="loginForm.get('username').invalid">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-button
+      type="submit"
+      color="primary"
+      mat-raised-button>Login</button>
+  </form>
+</div>
