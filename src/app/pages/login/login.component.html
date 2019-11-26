@@ -6,11 +6,11 @@
       <input
         matInput
         type="text"
-        placeholder="Username"
+        placeholder="{{ 'login.placeholder.username' | translate }}"
         autocomplete="off"
         formControlName="username">
       <mat-error *ngIf="loginForm.get('username').invalid">
-        Username is required
+        {{ 'login.error.username-required' | translate }}
       </mat-error>
     </mat-form-field>
   
@@ -18,11 +18,11 @@
       <input
         matInput
         type="password"
-        placeholder="Password"
+        placeholder="{{ 'login.placeholder.password' | translate }}"
         autocomplete="new-password"
         formControlName="password">
       <mat-error *ngIf="loginForm.get('username').invalid">
-        Password is required
+        {{ 'login.error.password-required' | translate }}
       </mat-error>
     </mat-form-field>
 
@@ -30,6 +30,8 @@
       mat-button
       type="submit"
       color="primary"
-      mat-raised-button>Login</button>
+      mat-raised-button>
+      {{ 'login.submit' | translate }}
+    </button>
   </form>
 </div>

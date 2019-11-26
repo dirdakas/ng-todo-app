@@ -10,6 +10,7 @@ export interface ILocalError {
 })
 export class StorageService {
   static ERROR_LOG_KEY: string = 'error_log';
+  static LOCALE_KEY: string = 'locale';
 
   setItem(key: string, value: string): void {
     sessionStorage.setItem(key, value);
@@ -52,5 +53,17 @@ export class StorageService {
     }
 
     return [];
+  }
+
+  setLocale(lang: string): void {
+    sessionStorage.setItem(
+      StorageService.LOCALE_KEY,
+      lang
+    );
+  }
+
+  getLocale(): string {
+    return sessionStorage
+      .getItem(StorageService.LOCALE_KEY);
   }
 }

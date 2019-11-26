@@ -1,0 +1,13 @@
+{
+  "login": {
+    "submit": "Log in",
+    "placeholder": {
+      "username": "Username",
+      "password": "Password"
+    },
+    "error": {
+      "username-required": "Username is required",
+      "password-required": "Password is required"
+    }
+  }
+}

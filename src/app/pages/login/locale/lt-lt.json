@@ -1,0 +1,13 @@
+{
+  "login": {
+    "submit": "Prisijungti",
+    "placeholder": {
+      "username": "Prisijungimo vardas",
+      "password": "Slaptažodis"
+    },
+    "error": {
+      "username-required": "Privaloma įvesti naudotojo vardą",
+      "password-required": "Privaloma įvesti naudotojo slaptažodį"
+    }
+  }
+}
