@@ -15,6 +15,7 @@ import { GlobalErrorHandler } from './services/global-error-handler/global-error
 import { TranslationService } from './services/translation/translation.service';
 import { UserService } from './services/user/user.service';
 import { HomeModule } from './pages/home/home.module';
+import { MainNavModule } from './components/main-nav/main-nav.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,6 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     HomeModule,
+    MainNavModule,
   ],
   providers: [
     {

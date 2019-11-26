@@ -1,0 +1,68 @@
+@import '../../../assets/styles/variables.sass'
+
+.sidenav-container
+  height: 100%
+
+  .sidenav
+    width: 200px
+    box-shadow: 3px 0 6px $shadow
+    background: $white
+    overflow-y: hidden
+    overflow-x: hidden
+
+    mat-nav-list
+      padding-top: 0
+
+      mat-list-item
+        &.active
+          &:not(:hover)
+            background: rgba(0, 0, 0, .2)
+
+        background: rgba(0, 0, 0, .1)
+
+        &:hover
+          background: rgba(0, 0, 0, .3)
+
+    .logout
+      position: absolute
+      bottom: 0
+      width: 100%
+      border-radius: 0px
+
+mat-toolbar
+  background: $white
+  box-shadow: 3px 0 6px $shadow
+
+  &.content
+    width: 100%
+    z-index: 2
+    position: fixed
+
+  &.mat-primary
+    position: sticky
+    top: 0
+    z-index: 1
+
+  .spacer
+    flex: 1 1 auto
+  
+  button
+    &.burger
+      padding: 0
+      min-width: 0
+
+  .user-info
+    display: flex
+    cursor: pointer
+
+    .user-status
+      margin: 5px
+      line-height: 20px
+
+      img
+        width: 1.5vmin
+
+.content-component
+  display: block
+  height: calc(100% - 75px)
+  overflow-y: auto

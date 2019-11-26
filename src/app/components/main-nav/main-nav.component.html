@@ -1,0 +1,61 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="isHandset ? 'dialog' : 'navigation'"
+    [mode]="isHandset ? 'over' : 'side'"
+    [disableClose]="isHandset ? false : true"
+    [opened]="!isHandset">
+    <mat-toolbar color="primary">{{ 'main-nav.title' | translate }}</mat-toolbar>
+    <mat-nav-list>
+      <div *ngFor="let topMenu of filteredMenu;">
+        <mat-list-item
+          (click)="onNavigateTo(topMenu.route)"
+          [ngClass]="{ 'active': topLevelActiveRouter.includes(topMenu.route) }">
+          <div mat-line>
+            {{ topMenu.title | translate }}
+          </div>
+          <mat-icon>
+            keyboard_arrow_right
+          </mat-icon>
+        </mat-list-item>
+      </div>
+    </mat-nav-list>
+    <button
+      class="logout"
+      title="{{ 'main-nav.logout' | translate }}"
+      color="primary"
+      mat-raised-button
+      (click)="onLogout()">
+      {{ 'main-nav.logout' | translate }}
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar
+      color="primary"
+      class="content">
+      <button
+        *ngIf="isHandset"  
+        class="burger"
+        type="button"
+        mat-button
+        (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <div class="user-info">
+        <div class="user-status">
+          <mat-icon>account_circle</mat-icon>
+        </div>
+        <div *ngIf="currentUser" class="logged-user">
+          <span>{{ currentUser.username }}</span>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="content-component">
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  

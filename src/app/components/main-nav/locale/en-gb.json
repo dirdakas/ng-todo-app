@@ -1,0 +1,8 @@
+{
+  "main-nav": {
+    "title": "ToDo App",
+    "home": "Home",
+    "list": "List",
+    "logout": "Log out"
+  }
+}

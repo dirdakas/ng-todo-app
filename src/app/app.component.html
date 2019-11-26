@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<ng-container
+  *ngIf="isUserLoggedIn; then loggedIn; else loggedOut">
+</ng-container>
+
+<ng-template #loggedIn>
+  <app-main-nav>
+    <router-outlet></router-outlet>
+  </app-main-nav>
+</ng-template>
+
+<ng-template #loggedOut>
+  <router-outlet></router-outlet>
+</ng-template>

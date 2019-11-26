@@ -17,7 +17,7 @@ import { IUserData } from './models/user-data.model';
 export class AppComponent implements OnInit, OnDestroy {
   static DEFAULT_LOCALE: string = 'lt-lt';
 
-  title = 'todo-app';
+  isUserLoggedIn: boolean;
 
   private userSub: Subscription;
 
@@ -52,6 +52,8 @@ export class AppComponent implements OnInit, OnDestroy {
       .userData$
       .pipe(
         tap((userData: IUserData) => {
+          this.isUserLoggedIn = !!userData;
+
           if (userData) {
             this.router.navigate(['home']);
           } else {

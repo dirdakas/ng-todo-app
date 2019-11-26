@@ -71,10 +71,14 @@ export class StorageService {
   }
 
   setUserData(userData: IUserData): void {
-    sessionStorage.setItem(
-      StorageService.USER_DATA_KEY,
-      JSON.stringify(userData)
-    );
+    if (userData) {
+      sessionStorage.setItem(
+        StorageService.USER_DATA_KEY,
+        JSON.stringify(userData)
+      );
+    } else {
+      this.clearStorageData();
+    }
   }
 
   getUserData(): IUserData {
