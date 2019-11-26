@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/styles/variables.sass'
+
 body
-  background-color: #b2a2f1b8
-  color: #ffffff
+  background-color: $main-background
+  color: $white
+
+  button
+    &[color='primary']
+      &:hover
+        background-color: $primary-button-hover-color
