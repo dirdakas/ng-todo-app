@@ -13,6 +13,8 @@ import { GlobalNotificationsService } from './services/global-notifications/glob
 import { StorageService } from './services/storage/storage.service';
 import { GlobalErrorHandler } from './services/global-error-handler/global-error-handler.service';
 import { TranslationService } from './services/translation/translation.service';
+import { UserService } from './services/user/user.service';
+import { HomeModule } from './pages/home/home.module';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-    })
+    }),
+    HomeModule,
   ],
   providers: [
     {
@@ -46,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GlobalNotificationsService,
     StorageService,
     TranslationService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

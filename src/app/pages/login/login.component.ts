@@ -6,6 +6,9 @@ import {
   Validators
 } from '@angular/forms';
 
+import { UserService } from './../../services/user/user.service';
+import { IUserData } from 'src/app/models/user-data.model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('submit me', this.loginForm);
+    if (this.loginForm.valid) {
+      this.mockLogin();
+    }
   }
 
   private initForm(): void {
@@ -31,5 +37,15 @@ export class LoginComponent implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });
+  }
+
+  private mockLogin(): void {
+    const loggedUser: IUserData = {
+      username: this.loginForm.get('username').value,
+      email: this.loginForm.get('username').value,
+      isAdmin: true
+    };
+
+    this.userService.setUserData(loggedUser);
   }
 }

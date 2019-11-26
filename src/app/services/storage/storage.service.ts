@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
+import { IUserData } from './../../models/user-data.model';
+
 export interface ILocalError {
-  date: string,
-  error: any
+  date: string;
+  error: any;
 }
 
 @Injectable({
@@ -11,6 +13,7 @@ export interface ILocalError {
 export class StorageService {
   static ERROR_LOG_KEY: string = 'error_log';
   static LOCALE_KEY: string = 'locale';
+  static USER_DATA_KEY: string = 'user';
 
   setItem(key: string, value: string): void {
     sessionStorage.setItem(key, value);
@@ -31,10 +34,10 @@ export class StorageService {
   storeError(error): void {
     const newError: ILocalError = {
       date: new Date().toISOString(),
-      error: error
+      error
     };
 
-    let errorList: ILocalError[] = this.getStoredErrors();
+    const errorList: ILocalError[] = this.getStoredErrors();
 
     errorList.push(newError);
 
@@ -65,5 +68,19 @@ export class StorageService {
   getLocale(): string {
     return sessionStorage
       .getItem(StorageService.LOCALE_KEY);
+  }
+
+  setUserData(userData: IUserData): void {
+    sessionStorage.setItem(
+      StorageService.USER_DATA_KEY,
+      JSON.stringify(userData)
+    );
+  }
+
+  getUserData(): IUserData {
+    const result: string = sessionStorage
+      .getItem(StorageService.USER_DATA_KEY);
+
+    return result ? JSON.parse(result) : null;
   }
 }
